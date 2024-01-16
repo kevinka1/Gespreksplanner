@@ -3,9 +3,20 @@ session_start();
 
 if (!isset($_SESSION['user'])) {
     // Redirect to login page if the user is not logged in
-    header('Location: dashboarrd.php');
+    header('Location: ../pages/login.php');
     exit();
 }
+
+// Assuming you have a 'Role' column in your 'Users' table
+$Role = $_SESSION['userRole']; // Retrieve the user's role from the session
+$username = $_SESSION['user']; // Retrieve the user's name from the session
+
+// Check if registration success message is set in the URL
+if (isset($_GET['registration']) && $_GET['registration'] === 'success') {
+    $registeredUsername = $_GET['username'] ?? '';
+    echo "<script>alert('Account for $registeredUsername has been successfully created!');</script>";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -14,12 +25,27 @@ if (!isset($_SESSION['user'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../styling/css.css">
 </head>
 <body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="logout.php">Uitloggen</a></li>
+                <li><a href="register.php">Registreren</a></li>
+                <li><a href="appointments.php">Mijn Afspraken</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <div class="dashboard-container">
-        <h1>Welcome, <?php echo $_SESSION['user']; ?>!</h1>
-        <a href="logout.php">Logout</a>
+        <?php
+        if ($Role == 0) {
+            echo "<h1>Welcome, $username!</h1>";
+        } elseif ($Role == 1) {
+            echo "<h1>Welcome, $username!</h1>";
+        }
+        ?>
     </div>
 </body>
 </html>

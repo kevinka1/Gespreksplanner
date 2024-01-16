@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="login-container">
         <h1>Login</h1>
-        <form action="index.php" method="post">
+        <form action="../interface/Login.php" method="post">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
 
