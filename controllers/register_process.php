@@ -1,6 +1,6 @@
 <?php
 // Include database connection or any necessary files
-require_once 'db.php';
+require_once("../database/db.php");
 
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $query->execute([$username, $email, $hashedPassword, $role]);
 
     // Redirect to the dashboard with a success message
-    header('Location: dashboard.php?registration=success&username=' . urlencode($username));
+    header('Location: ../pages/dashboard.php?registration=success&username=' . urlencode($username));
     exit();
 }
  

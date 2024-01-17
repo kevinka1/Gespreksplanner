@@ -88,3 +88,141 @@ nav ul li a:hover {
 }
 
 /* Add more styles as needed */
+
+/* style.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.registration-container {
+    margin: 20px;
+    text-align: center;
+}
+
+.registration-container h1 {
+    color: #3498db; /* Blue color */
+}
+
+.registration-container form {
+    display: inline-block;
+    text-align: left;
+    background-color: #ecf0f1; /* Light gray background */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.registration-container label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.registration-container input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #bdc3c7; /* Light border color */
+    border-radius: 5px;
+}
+
+.registration-container button {
+    background-color: #3498db; /* Blue color */
+    color: #ffffff; /* White color */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth background color transition on hover */
+}
+
+.registration-container button:hover {
+    background-color: #2980b9; /* Darker blue color on hover */
+}
+
+/* Add more styles as needed */
+
+
+/* style.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #3498db; /* Blue color */
+    padding: 20px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #ffffff; /* White color */
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.dashboard-container {
+    margin: 20px;
+    text-align: center;
+}
+
+.dashboard-container h1,
+.dashboard-container h2 {
+    color: #3498db; /* Blue color */
+}
+
+.dashboard-container form {
+    display: inline-block;
+    text-align: left;
+    background-color: #ecf0f1; /* Light gray background */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.dashboard-container label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.dashboard-container select,
+.dashboard-container input,
+.dashboard-container textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #bdc3c7; /* Light border color */
+    border-radius: 5px;
+}
+
+.dashboard-container button {
+    background-color: #3498db; /* Blue color */
+    color: #ffffff; /* White color */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth background color transition on hover */
+}
+
+.dashboard-container button:hover {
+    background-color: #2980b9; /* Darker blue color on hover */
+}
+
+/* Add more styles as needed */

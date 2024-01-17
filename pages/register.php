@@ -1,15 +1,23 @@
+<?php
+require_once '../controllers/register_process.php';
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../styling/css.css">
 </head>
 <body>
     <div class="registration-container">
         <h1>Registreren</h1>
-        <form action="register_process.php" method="post">
+        <form action="../controllers/register_process.php" method="post">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
 

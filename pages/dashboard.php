@@ -7,13 +7,14 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
-// Assuming you have a 'Role' column in your 'Users' table
+
 $Role = $_SESSION['userRole']; // Retrieve the user's role from the session
 $username = $_SESSION['user']; // Retrieve the user's name from the session
 
 // Check if registration success message is set in the URL
 if (isset($_GET['registration']) && $_GET['registration'] === 'success') {
     $registeredUsername = $_GET['username'] ?? '';
+    $registeredUsername = urldecode($registeredUsername); // Decode the username
     echo "<script>alert('Account for $registeredUsername has been successfully created!');</script>";
 }
 
@@ -31,9 +32,15 @@ if (isset($_GET['registration']) && $_GET['registration'] === 'success') {
     <header>
         <nav>
             <ul>
-                <li><a href="logout.php">Uitloggen</a></li>
-                <li><a href="register.php">Registreren</a></li>
-                <li><a href="appointments.php">Mijn Afspraken</a></li>
+                <li><a href="my_appointments.php">Mijn Afspraken</a></li>
+                <li><a href="appointments.php">Afspraken Maken</a></li>
+                <?php
+                if ($Role == 1) {
+                    // Admin ziet extra menu-items
+                    echo '<li><a href="../pages/register.php">Gebruiker Aanmaken</a></li>';
+                }
+                ?>
+                <li style="float: right;"><a href="logout.php">Uitloggen</a></li>
             </ul>
         </nav>
     </header>
