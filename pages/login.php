@@ -4,7 +4,7 @@ session_start();
 require_once '../database/db.php';
 require_once '../controllers/LoginController.php';
 
-$loginController = new LoginController($db);
+$loginController = new LoginController($pdo);
 
 if (isset($_SESSION['user'])) {
     // Redirect to dashboard or home page if the user is already logged in

@@ -1,6 +1,6 @@
 <?php
 require_once '../controllers/register_process.php';
-
+require_once '../pages/header.php';
 ?>
 
 

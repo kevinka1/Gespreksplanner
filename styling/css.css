@@ -226,3 +226,77 @@ nav ul li a {
 }
 
 /* Add more styles as needed */
+
+/* Add these styles to your existing CSS file or create a new one */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.content-container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Add these styles to your existing CSS file or create a new one */
+
+.appointment-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.appointment-column {
+    border: 1px solid #ccc;
+    padding: 15px;
+    width: calc(25% - 20px); /* 25% width with 20px gap between columns */
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.appointment-column p {
+    margin: 0;
+}

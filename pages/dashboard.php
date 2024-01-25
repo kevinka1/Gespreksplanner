@@ -1,15 +1,10 @@
+
 <?php
-session_start();
+include '../pages/header.php';  // Include header
 
-if (!isset($_SESSION['user'])) {
-    // Redirect to login page if the user is not logged in
-    header('Location: ../pages/login.php');
-    exit();
-}
+require_once '../database/db.php';
 
-
-$Role = $_SESSION['userRole']; // Retrieve the user's role from the session
-$username = $_SESSION['user']; // Retrieve the user's name from the session
+require_once '../functions/functions.php';
 
 // Check if registration success message is set in the URL
 if (isset($_GET['registration']) && $_GET['registration'] === 'success') {
@@ -17,6 +12,8 @@ if (isset($_GET['registration']) && $_GET['registration'] === 'success') {
     $registeredUsername = urldecode($registeredUsername); // Decode the username
     echo "<script>alert('Account for $registeredUsername has been successfully created!');</script>";
 }
+
+$appointments = getLatestAppointments($pdo, 4);
 
 ?>
 
@@ -29,30 +26,26 @@ if (isset($_GET['registration']) && $_GET['registration'] === 'success') {
     <link rel="stylesheet" href="../styling/css.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="my_appointments.php">Mijn Afspraken</a></li>
-                <li><a href="appointments.php">Afspraken Maken</a></li>
-                <?php
-                if ($Role == 1) {
-                    // Admin ziet extra menu-items
-                    echo '<li><a href="../pages/register.php">Gebruiker Aanmaken</a></li>';
-                }
-                ?>
-                <li style="float: right;"><a href="logout.php">Uitloggen</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <div class="dashboard-container">
+    <div class="content-container">
         <?php
-        if ($Role == 0) {
-            echo "<h1>Welcome, $username!</h1>";
-        } elseif ($Role == 1) {
-            echo "<h1>Welcome, $username!</h1>";
-        }
+        echo "<h1>Welcome to the Dashboard!</h1>";
         ?>
+
+        <div class="appointment-container">
+            <?php
+                foreach ($appointments as $appointment) {
+                    echo '<div class="appointment-column appointment-id-' . $appointment['id'] . '">';
+                echo '<p><strong>Afspraak:</strong> ' . $appointment['afspraak'] . '</p>';
+                echo '<p><strong>Leraar:</strong> ' . $appointment['leraar'] . '</p>';
+                echo '<p><strong>Email:</strong> ' . $appointment['email'] . '</p>';
+                echo '<p><strong>Opmerking:</strong> ' . $appointment['opmerking'] . '</p>';
+                echo '</div>';
+            }
+            ?>
+        </div>
     </div>
+
 </body>
+
 </html>
