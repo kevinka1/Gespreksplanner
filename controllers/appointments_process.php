@@ -8,6 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Validate and sanitize form data
     $teacher = isset($_POST['teacher']) ? htmlspecialchars($_POST['teacher']) : '';
+    $teacher = isset($_POST['gebruikers']) ? htmlspecialchars($_POST['gebruikers']) : '';
     $afspraak = isset($_POST['afspraak']) ? htmlspecialchars($_POST['afspraak']) : '';
     $opmerking = isset($_POST['opmerking']) ? htmlspecialchars($_POST['opmerking']) : '';
     $email = isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '';

@@ -17,6 +17,7 @@ $Role = $_SESSION['userRole']; // Haal de rol van de gebruiker op uit de sessie
 $userName = $_SESSION['user']; // Haal de naam van de gebruiker op uit de sessie
 
 $teachers = getTeachers($pdo); // Haal alle leraren op uit de database
+$gebruiker = getUserIds($pdo); // Haal alle gebruikers op uit de database
 ?>
 
 <!DOCTYPE html>
@@ -39,9 +40,18 @@ $teachers = getTeachers($pdo); // Haal alle leraren op uit de database
             <select id="teacher" name="teacher" required>
                 <?php
                 foreach ($teachers as $teacher) {
-                    $Username = $teacher['username'];
-                    echo '<option value="'. $Username . '</option>';
+                    echo '<option value="'. $teacher['username'] . '">'. $teacher['username'] . '   </option>';
                 }
+                ?>
+            </select>
+            <?php
+                if ($Role == 1) {
+        echo'    <label for="teacher">Kies de bijpassende leerlingen:</label>
+            <select id="teacher" name="teacher" required>';
+                foreach ($gebruiker as $gebruikers) {
+                    echo '<option value="'. $gebruikers['username'] . '">'. $gebruikers['username'] . '   </option>';
+                }
+            }
                 ?>
             </select>
 
