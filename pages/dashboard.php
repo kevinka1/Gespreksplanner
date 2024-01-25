@@ -15,6 +15,11 @@ if (isset($_GET['registration']) && $_GET['registration'] === 'success') {
 
 $appointments = getLatestAppointments($pdo, 4);
 
+$deleteSuccess = isset($_SESSION['delete_success']) ? $_SESSION['delete_success'] : false;
+
+// Unset the session variable to avoid showing the alert multiple times
+unset($_SESSION['delete_success']);
+
 ?>
 
 <!DOCTYPE html>
@@ -30,21 +35,38 @@ $appointments = getLatestAppointments($pdo, 4);
     <div class="content-container">
         <?php
         echo "<h1>Welcome to the Dashboard!</h1>";
+
+        if ($deleteSuccess) {
+            echo '<div class="alert success">Appointment has been successfully deleted!</div>';
+        }
         ?>
 
-        <div class="appointment-container">
+    
+<div class="appointment-container">
             <?php
-                foreach ($appointments as $appointment) {
-                    echo '<div class="appointment-column appointment-id-' . $appointment['id'] . '">';
+            foreach ($appointments as $appointment) {
+                echo '<div class="appointment-column appointment-id-' . $appointment['id'] . '">';
                 echo '<p><strong>Afspraak:</strong> ' . $appointment['afspraak'] . '</p>';
                 echo '<p><strong>Leraar:</strong> ' . $appointment['leraar'] . '</p>';
                 echo '<p><strong>Email:</strong> ' . $appointment['email'] . '</p>';
                 echo '<p><strong>Opmerking:</strong> ' . $appointment['opmerking'] . '</p>';
+                echo '<form action="../controllers/delete_appointment.php" method="post">';
+                echo '<input type="hidden" name="appointment_id" value="' . $appointment['id'] . '">';
+                echo '<button type="submit">Delete</button>';
+                echo '</form>';
                 echo '</div>';
             }
             ?>
         </div>
     </div>
+
+    <script>
+        // Check if the deleteSuccess variable is set and display an alert
+        if (<?php echo json_encode($deleteSuccess); ?>) {
+            alert('je afspraak is verwijderd');
+        }
+    </script>
+
 
 </body>
 
