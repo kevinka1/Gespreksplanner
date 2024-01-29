@@ -37,7 +37,7 @@ unset($_SESSION['delete_success']);
         echo "<h1>Welcome to the Dashboard!</h1>";
 
         if ($deleteSuccess) {
-            echo '<div class="alert success">Appointment has been successfully deleted!</div>';
+            echo '<div class="alert success">er zijn geen actieve afspraken!</div>';
         }
         ?>
 
