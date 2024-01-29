@@ -20,6 +20,11 @@ $deleteSuccess = isset($_SESSION['delete_success']) ? $_SESSION['delete_success'
 // Unset the session variable to avoid showing the alert multiple times
 unset($_SESSION['delete_success']);
 
+$createSuccess = isset($_SESSION['create_success']) ? $_SESSION['create_success'] : false;
+
+// Unset the session variable to avoid showing the alert multiple times
+unset($_SESSION['create_success']);
+
 ?>
 
 <!DOCTYPE html>
@@ -34,11 +39,10 @@ unset($_SESSION['delete_success']);
 
     <div class="content-container">
         <?php
-        echo "<h1>Welcome to the Dashboard!</h1>";
+        echo "<h1>Welcome op het dashboard!</h1>";
+        
 
-        if ($deleteSuccess) {
-            echo '<div class="alert success">er zijn geen actieve afspraken!</div>';
-        }
+        
         ?>
 
     
@@ -48,17 +52,25 @@ unset($_SESSION['delete_success']);
                 echo '<div class="appointment-column appointment-id-' . $appointment['id'] . '">';
                 echo '<p><strong>Afspraak:</strong> ' . $appointment['afspraak'] . '</p>';
                 echo '<p><strong>Leraar:</strong> ' . $appointment['leraar'] . '</p>';
+                echo '<p><strong>leerling:</strong> ' . $appointment['username'] . '</p>';
                 echo '<p><strong>Email:</strong> ' . $appointment['email'] . '</p>';
                 echo '<p><strong>Opmerking:</strong> ' . $appointment['opmerking'] . '</p>';
                 echo '<form action="../controllers/delete_appointment.php" method="post">';
                 echo '<input type="hidden" name="appointment_id" value="' . $appointment['id'] . '">';
-                echo '<button type="submit">Delete</button>';
+                echo '<button type="submit">verwijderen</button>';
                 echo '</form>';
                 echo '</div>';
             }
             ?>
         </div>
     </div>
+
+    <script>
+        // Check if the deleteSuccess variable is set and display an alert
+        if (<?php echo json_encode($createSuccess); ?>) {
+            alert('je afspraak is aangemaakt');
+        }
+    </script>
 
     <script>
         // Check if the deleteSuccess variable is set and display an alert

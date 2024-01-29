@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     // Insert user data into the database
-    $query = $db->prepare('INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)');
+    $query = $pdo->prepare('INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)');
     $query->execute([$username, $email, $hashedPassword, $role]);
 
     // Redirect to the dashboard with a success message

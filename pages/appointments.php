@@ -46,12 +46,14 @@ $gebruiker = getUserIds($pdo); // Haal alle gebruikers op uit de database
             </select>
             <?php
                 if ($Role == 1) {
-        echo'    <label for="teacher">Kies de bijpassende leerlingen:</label>
-            <select id="teacher" name="teacher" required>';
+                    $Username = $gebruiker[0]['username'];
+                
+        echo'    <label for="gebruikers">Kies de bijpassende leerlingen:</label>
+            <select id="gebruikers" name="gebruikers" required>;
                 foreach ($gebruiker as $gebruikers) {
-                    echo '<option value="'. $gebruikers['username'] . '">'. $gebruikers['username'] . '   </option>';
+                    <option value="'. $Username . '">'. $Username . '   </option>';
                 }
-            }
+            
                 ?>
             </select>
 
@@ -63,6 +65,11 @@ $gebruiker = getUserIds($pdo); // Haal alle gebruikers op uit de database
 
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
+
+            <!-- add label for timestamp choose day and the time
+            <label for="timestamp">Kies een dag en tijd:</label>
+            <input type="datetime-local" id="timestamp" name="timestamp" required> -->
+
 
             <button type="submit">Afspraak Maken</button>
         </form>

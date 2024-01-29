@@ -10,14 +10,16 @@ function getTeachers($pdo) {
 
 
 function getUserIds($pdo) {
-    $query = "SELECT username FROM users WHERE Role = 0";
+    $query = "SELECT `username` FROM `users` WHERE `Role` = 0";
     $statement = $pdo->query($query);
-    return $statement->fetchAll(PDO::FETCH_COLUMN);
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
 
+
+
 function getLatestAppointments($pdo, $limit = 10) {
-    $query = "SELECT id, afspraak, leraar, email, opmerking FROM Afspraken ORDER BY Created_at DESC LIMIT :limit";
+    $query = "SELECT id, afspraak, leraar, email, opmerking, username FROM Afspraken ORDER BY Created_at  LIMIT :limit";
     $statement = $pdo->prepare($query);
     $statement->bindParam(':limit', $limit, PDO::PARAM_INT);
     $statement->execute();
