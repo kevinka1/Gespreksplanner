@@ -44,17 +44,19 @@ $gebruiker = getUserIds($pdo); // Haal alle gebruikers op uit de database
                 }
                 ?>
             </select>
+
             <?php
-                if ($Role == 1) {
-                    $Username = $gebruiker[0]['username'];
+if ($Role == 1) {
+    echo '<label for="gebruikers">Kies de bijpassende leerlingen:</label>';
+    echo '<select id="gebruikers" name="gebruikers" required>';
+    foreach ($gebruiker as $gebruiker) {
+        echo '<option value="' . $gebruiker['username'] . '">' . $gebruiker['username'] . '</option>';
+    }
+    echo '</select>';
+}
+?>
+
                 
-        echo'    <label for="gebruikers">Kies de bijpassende leerlingen:</label>
-            <select id="gebruikers" name="gebruikers" required>;
-                foreach ($gebruiker as $gebruikers) {
-                    <option value="'. $Username . '">'. $Username . '   </option>';
-                }
-            
-                ?>
             </select>
 
             <label for="afspraak">Afspraak:</label>
